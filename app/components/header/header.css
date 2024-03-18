@@ -1,0 +1,50 @@
+.header {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  grid-template-rows: 60px;
+  background-color: var(--main-color-200);
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.logo > h1 {
+  color: var(--main-color-700);
+}
+.nav-lines {
+  position: relative;
+  margin: 15px 10px;
+}
+
+.nav-lines > div {
+  position: absolute;
+  height: 2px;
+  background-color: gray;
+  width: 40px;
+
+  transform-origin: 0 0;
+}
+.line1 {
+  top: 0;
+  transition: transform 300ms;
+}
+.line2 {
+  top: 50%;
+  opacity: 1;
+  transition: opacity 100ms;
+}
+.line3 {
+  bottom: 0;
+  transition: transform 300ms;
+}
+.line1-nav-open {
+  transform: rotate(45deg);
+}
+.line2-nav-open {
+  opacity: 0;
+}
+.line3-nav-open {
+  transform: rotate(-45deg);
+}
