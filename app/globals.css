@@ -12,6 +12,15 @@
   --main-color-800: rgb(30 41 59);
   --main-color-900: rgb(15 23 42);
   --main-color-950: rgb(2 6 23);
+  --header-height: 100px;
+  --primary-text-color: var(--main-color-800);
+  --secondary-text-color: var(--main-color-200);
+  --text-xs: 1rem;
+  --text-s: 1.5rem;
+  --text-m: 2rem;
+  --text-2m: 2.5rem;
+  --text-l: 3rem;
+  --text-xl: 3.5rem;
 }
 main,
 body,
@@ -28,4 +37,14 @@ p {
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(
+    90deg,
+    var(--main-color-400) 0%,
+    var(--main-color-500) 35%,
+    var(--main-color-600) 75%,
+    var(--main-color-700) 100%
+  );
 }

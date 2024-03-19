@@ -1,0 +1,37 @@
+.card-wrapper {
+  color: var(--main-color-800);
+  margin-top: 20px;
+  display: grid;
+  column-gap: 30px;
+  row-gap: 20px;
+  width: 100%;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.card {
+  height: 300px;
+  margin-top: 40px;
+  width: 300px;
+  border: 1px solid var(--main-color-500);
+  border-radius: 5px;
+  animation: 1s showup forwards;
+  opacity: 0;
+}
+
+.overview-link {
+  text-decoration: underline;
+  color: var(--main-color-800);
+}
+.card > div {
+  margin: 10px;
+}
+
+@keyframes showup {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

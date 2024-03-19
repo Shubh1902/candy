@@ -13,7 +13,7 @@
   width: 100%;
   position: fixed;
   z-index: 999;
-  background-color: var(--main-color-100);
+  background-color: var(--main-color-300);
 }
 .list-wrapper {
   width: 100%;

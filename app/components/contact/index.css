@@ -1,0 +1,30 @@
+.button {
+  height: 100px;
+  background: var(--main-color-800);
+  color: var(--main-color-200);
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: scale 200ms;
+  text-transform: uppercase;
+  border-radius: 5px;
+  animation: 1s 3.5s showup forwards;
+  opacity: 0;
+  text-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.button:hover {
+  scale: 1.1;
+}
+
+@keyframes showup {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    opacity: 1;
+    width: 300px;
+  }
+}

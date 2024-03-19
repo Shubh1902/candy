@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import Link from "next/link";
 import React, { useState } from "react";
-import "./navigation.css";
+import "./index.css";
 interface Props {
   open: boolean;
 }
