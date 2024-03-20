@@ -8,7 +8,7 @@ interface Props {
 const Navigation = (props: Props) => {
   return (
     <nav
-      className={classNames("nav", {
+      className={classNames({
         "nav-hidden": !props.open,
         "nav-visible": props.open,
       })}

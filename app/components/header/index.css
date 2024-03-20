@@ -33,12 +33,11 @@ header {
   width: 50px;
   height: 5px;
   border-radius: 3px;
-  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 200ms;
 }
 .line1 {
   position: absolute;
   top: 0;
-  transform-origin: left;
 }
 .line2 {
   position: absolute;
@@ -49,16 +48,16 @@ header {
 .line3 {
   position: absolute;
   bottom: 0;
-  transform-origin: left;
 }
+
 .line1-nav-open {
-  transform: rotate(45deg);
-  width: 65px !important;
+  transform: translate(0, calc(25px - 50%)) rotate(45deg);
 }
+
 .line2-nav-open {
+  transform: translate(calc(50px - 50%), 0);
   opacity: 0;
 }
 .line3-nav-open {
-  transform: rotate(-45deg);
-  width: 65px !important;
+  transform: translate(0, calc(-25px + 50%)) rotate(-45deg);
 }
