@@ -9,7 +9,7 @@ interface Props {
 const ROUTES = [
   { label: "Work Experience", path: "/work" },
   { label: "Projects", path: "/projects" },
-  { label: "About", path: "/about" },
+  { label: "Products", path: "/products" },
   { label: "Todos", path: "/todos" },
 ];
 const Navigation = (props: Props) => {

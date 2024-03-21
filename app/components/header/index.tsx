@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import "./index.css";
 import Navigation from "./navigation";
@@ -7,12 +7,14 @@ import Image from "next/image";
 import logoImage from "./shubh.png";
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+
   const handleNavClick = () => {
     setIsNavOpen((prev) => !prev);
   };
   const handleClose = () => {
     setIsNavOpen(false);
   };
+
   return (
     <header>
       <div className="header">
