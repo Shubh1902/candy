@@ -2,13 +2,16 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import "./index.css";
-import Navigation from "../navigation";
+import Navigation from "./navigation";
 import Image from "next/image";
 import logoImage from "./shubh.png";
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const handleNavClick = () => {
     setIsNavOpen((prev) => !prev);
+  };
+  const handleClose = () => {
+    setIsNavOpen(false);
   };
   return (
     <header>
@@ -20,6 +23,7 @@ const Header = () => {
             alt="shubh logo"
             width="100"
             height="100"
+            priority
           ></Image>
         </div>
         <div className="hamburger-wrapper">
@@ -42,7 +46,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Navigation open={isNavOpen} />
+      {isNavOpen && <Navigation open={isNavOpen} handleClose={handleClose} />}
     </header>
   );
 };

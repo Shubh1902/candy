@@ -1,0 +1,54 @@
+.todo-form {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-form > input {
+  width: 80%;
+  margin-top: 20px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+}
+
+.todo-form > button {
+  text-transform: uppercase;
+  width: 80%;
+  margin-top: 20px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  background: var(--main-color-700);
+  color: var(--main-color-200);
+  font-size: 1.2rem;
+  transition: background 400ms, scale 400ms;
+  cursor: pointer;
+}
+.todo-form > button:hover {
+  background: var(--main-color-800);
+  scale: 1.01;
+}
+.list-wrapper {
+  width: 100vw;
+}
+
+.list {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 50px 0 50px 0;
+  padding: 0;
+}
+.list > li {
+  margin: 10px 0 10px 0;
+  padding: 0;
+  list-style: lower-roman;
+  font-size: 1.2rem;
+}
