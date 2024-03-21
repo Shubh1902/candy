@@ -47,4 +47,5 @@ body {
     var(--main-color-600) 75%,
     var(--main-color-700) 100%
   );
+  color: var(--main-color-800);
 }

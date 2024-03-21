@@ -17,21 +17,21 @@ header {
   scale: 1.5;
   overflow: hidden;
 }
-.nav-wrapper {
+.hamburger-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.nav-lines {
-  height: 50px;
-  width: 50px;
+.hamburger-lines {
+  height: 30px;
+  width: 40px;
   cursor: pointer;
   position: relative;
 }
-.nav-lines > div {
+.hamburger-lines > div {
   background: var(--main-color-200);
-  width: 50px;
-  height: 5px;
+  width: 40px;
+  height: 3px;
   border-radius: 3px;
   transition: transform 0.5s, opacity 200ms;
 }
@@ -51,13 +51,13 @@ header {
 }
 
 .line1-nav-open {
-  transform: translate(0, calc(25px - 50%)) rotate(45deg);
+  transform: translate(0, calc(15px - 50%)) rotate(45deg);
 }
 
 .line2-nav-open {
-  transform: translate(calc(50px - 50%), 0);
+  transform: translate(calc(30px - 50%), 0);
   opacity: 0;
 }
 .line3-nav-open {
-  transform: translate(0, calc(-25px + 50%)) rotate(-45deg);
+  transform: translate(0, calc(-15px + 50%)) rotate(-45deg);
 }

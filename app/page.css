@@ -1,3 +1,57 @@
 .hero {
   height: calc(100vh - var(--header-height));
 }
+.intro-container {
+  margin: 100px auto 100px 20px;
+}
+.hero-name {
+  height: 60px;
+  font-size: 1.4rem;
+  color: var(--main-color-800);
+  overflow: hidden;
+  animation: swipe 1s forwards;
+}
+
+.scroll-container {
+  height: 50px;
+  width: 300px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+}
+.intro {
+  position: relative;
+  top: 0px;
+  animation: move 4s 1s infinite;
+}
+
+.intro > h1 {
+  padding: 5px 0;
+}
+
+@keyframes move {
+  0% {
+    top: 0px;
+  }
+  25% {
+    top: -50px;
+  }
+  50% {
+    top: -100px;
+  }
+  75% {
+    top: -150px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+@keyframes swipe {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

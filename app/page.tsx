@@ -1,11 +1,22 @@
-import Contact from "./components/contact";
-import WorkOverview from "./components/workOverview";
+import { useCallback, useState } from "react";
 import "./page.css";
 
 export default function Home() {
   return (
     <div className="hero">
-      <h1>Hi, I am Shubhanshu.</h1>
+      <div className="intro-container">
+        <div className="hero-name">
+          <h1>Shubhanshu</h1>
+        </div>
+        <div className="scroll-container">
+          <div className="intro">
+            <h1>Human.</h1>
+            <h1>Developer.</h1>
+            <h1>Sportsperson.</h1>
+            <h1>Architect.</h1>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

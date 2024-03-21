@@ -22,12 +22,13 @@ const Header = () => {
             height="100"
           ></Image>
         </div>
-        <div className="nav-wrapper">
+        <div className="hamburger-wrapper">
           <div
-            className={classNames("nav-lines", {
-              "nav-lines-nav-open": isNavOpen,
+            className={classNames("hamburger-lines", {
+              "hamburger-lines-nav-open": isNavOpen,
             })}
             onClick={handleNavClick}
+            data-testid="hamburger"
           >
             <div
               className={classNames("line1", { "line1-nav-open": isNavOpen })}
