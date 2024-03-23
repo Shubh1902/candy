@@ -1,3 +1,12 @@
+.work-overview {
+  margin: 60px 10%;
+}
+
+.overview-link {
+  text-decoration: none;
+  color: var(--main-color-800);
+}
+
 .card-wrapper {
   color: var(--main-color-800);
   margin-top: 20px;
@@ -10,28 +19,70 @@
 }
 
 .card {
+  cursor: pointer;
   height: 300px;
-  margin-top: 40px;
+  margin-top: 20px;
   width: 300px;
-  border: 1px solid var(--main-color-500);
-  border-radius: 5px;
-  animation: 1s showup forwards;
+  border: none;
+  border-radius: 10px;
+  animation: 1s bottom-to-top forwards;
   opacity: 0;
+  background: var(--main-color-700);
+  transition: scale 200ms;
 }
 
-.overview-link {
-  text-decoration: underline;
-  color: var(--main-color-800);
+.card:hover {
+  scale: 1.04;
+}
+
+.card-header {
+  border-bottom: 2px solid var(--main-color-500);
+  padding-bottom: 10px;
+  font-size: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.card-header > h2 {
+  color: var(--main-color-300);
+}
+.company-image-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.company-image-logo {
+  height: 30px;
+  width: auto;
+}
+.card-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-size: 1.2rem;
+}
+.card-content {
+  padding: 10px;
+  backdrop-filter: blur(5px);
+}
+.role-name {
+  font-size: 1rem;
 }
 .card > div {
   margin: 10px;
+  color: var(--main-color-300);
 }
-
-@keyframes showup {
+.card-content > h1 {
+  color: var(--main-color-300);
+}
+@keyframes bottom-to-top {
   0% {
     opacity: 0;
+    transform: translateY(100%);
   }
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }

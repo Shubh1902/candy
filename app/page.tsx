@@ -1,9 +1,10 @@
 import { useCallback, useState } from "react";
 import "./page.css";
+import WorkOverview from "./components/workOverview";
 
 export default function Home() {
   return (
-    <div className="hero">
+    <div>
       <div className="intro-container">
         <div className="hero-name">
           <h1>Shubhanshu</h1>
@@ -17,6 +18,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <section className="work-overview-wrapper">
+        <WorkOverview />
+      </section>
     </div>
   );
 }
