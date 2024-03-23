@@ -1,6 +1,9 @@
 .overview-link {
   text-decoration: none;
   color: var(--main-color-800);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-wrapper {
@@ -89,4 +92,7 @@
 
 .card-wrapper > a {
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
