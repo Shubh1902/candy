@@ -5,6 +5,7 @@ import "./index.css";
 import Navigation from "./navigation";
 import Image from "next/image";
 import logoImage from "./shubh.png";
+import Link from "next/link";
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -20,13 +21,15 @@ const Header = () => {
       <div className="header">
         <div></div>
         <div className="logo">
-          <Image
-            src={logoImage.src}
-            alt="shubh logo"
-            width="100"
-            height="100"
-            priority
-          ></Image>
+          <Link href="/">
+            <Image
+              src={logoImage.src}
+              alt="shubh logo"
+              width="100"
+              height="100"
+              priority
+            ></Image>
+          </Link>
         </div>
         <div className="hamburger-wrapper">
           <div

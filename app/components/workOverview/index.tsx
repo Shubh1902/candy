@@ -5,9 +5,22 @@ import nurtureLogo from "./nurture.png";
 import talenticaLogo from "./talentica.svg";
 import zebraLogo from "./zebra.png";
 import Image from "next/image";
-import zebraBackground from "./zebra.jpeg";
-import nurtureBackground from "./nurture-background.jpeg";
 import talenticaBackground from "./talentica-background.jpeg";
+const MONTH = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 const WORK_DATA = [
   {
     id: "nurture",
@@ -15,8 +28,8 @@ const WORK_DATA = [
     logo: nurtureLogo,
     background: talenticaBackground,
     tenure: {
-      startDate: new Date(2021, 8, 1),
-      endDate: new Date(2024, 1, 1),
+      startDate: new Date(2021, 8),
+      endDate: new Date(2024, 1),
     },
     position: "Technical Lead",
   },
@@ -26,8 +39,8 @@ const WORK_DATA = [
     logo: nurtureLogo,
     background: talenticaBackground,
     tenure: {
-      startDate: new Date(2021, 8, 1),
-      endDate: new Date(2024, 1, 1),
+      startDate: new Date(2021, 8),
+      endDate: new Date(2024, 1),
     },
     position: "Senior Software Engineer",
   },
@@ -54,6 +67,12 @@ const WORK_DATA = [
     position: "Software Engineer",
   },
 ];
+const getFormattedDate = (date: Date) => {
+  return `${MONTH[date.getMonth() - 1]} ${date
+    .getFullYear()
+    .toString()
+    .padStart(4, "0")}`;
+};
 const WorkOverview = () => {
   return (
     <div id="work-overview">
@@ -77,6 +96,10 @@ const WorkOverview = () => {
               <div className="card-content-wrapper">
                 <div className="card-content">
                   <h1>{workElem.position}</h1>
+                  <h1 className="tenure-date">
+                    {getFormattedDate(workElem.tenure.startDate)}-
+                    {getFormattedDate(workElem.tenure.endDate)}
+                  </h1>
                 </div>
               </div>
             </div>

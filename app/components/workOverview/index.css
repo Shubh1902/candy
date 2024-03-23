@@ -86,3 +86,7 @@
     transform: translateY(0);
   }
 }
+.tenure-date {
+  padding-top: 10px;
+  font-size: 1.1rem;
+}
