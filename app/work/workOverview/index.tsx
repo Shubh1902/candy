@@ -21,7 +21,11 @@ const WorkOverview = () => {
       <div className="card-wrapper">
         {WORK_DATA.map((workElem) => {
           return (
-            <Link className="work-link" href={`/work/${workElem.id}`}>
+            <Link
+              key={workElem.id}
+              className="work-link"
+              href={`/work/${workElem.id}`}
+            >
               <div className="card" key={workElem.id}>
                 <div className="card-header">
                   <h2 className="company-name">{workElem.name}</h2>

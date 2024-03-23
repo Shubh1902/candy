@@ -27,9 +27,9 @@ const WorkDetails = ({ params }: { params: { id: string } }) => {
       </div>
       <div>
         <ul>
-          {workDetails.description.map((item) => {
+          {workDetails.description.map((item, index) => {
             return (
-              <li>
+              <li key={index}>
                 <p>{item}</p>
               </li>
             );
@@ -41,9 +41,9 @@ const WorkDetails = ({ params }: { params: { id: string } }) => {
           <h4>Primary skills in this role</h4>
         </div>
         <ul>
-          {workDetails.skills.map((item) => {
+          {workDetails.skills.map((item, index) => {
             return (
-              <li>
+              <li key={index}>
                 <p>{item}</p>
               </li>
             );
