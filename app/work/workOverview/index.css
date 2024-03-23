@@ -1,7 +1,3 @@
-.work-overview {
-  margin: 60px 10%;
-}
-
 .overview-link {
   text-decoration: none;
   color: var(--main-color-800);
@@ -89,4 +85,8 @@
 .tenure-date {
   padding-top: 10px;
   font-size: 1.1rem;
+}
+
+.card-wrapper > a {
+  text-decoration: none;
 }

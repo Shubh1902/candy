@@ -21,7 +21,7 @@ const Header = () => {
       <div className="header">
         <div></div>
         <div className="logo">
-          <Link href="/">
+          <Link href="/" onClick={handleClose}>
             <Image
               src={logoImage.src}
               alt="shubh logo"

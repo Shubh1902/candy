@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import "./page.css";
-import WorkOverview from "./components/workOverview";
+import WorkOverview from "./work/workOverview";
 
 export default function Home() {
   return (
