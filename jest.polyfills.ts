@@ -10,14 +10,19 @@
  */
 //@ts-ignore
 import { TextDecoder, TextEncoder, ReadableStream } from "node:util";
-
+import { Blob, File } from "node:buffer";
+function channelMock() {}
+channelMock.prototype.onmessage = function () {};
+channelMock.prototype.postMessage = function (data: any) {
+  this.onmessage({ data });
+};
 Object.defineProperties(globalThis, {
   TextDecoder: { value: TextDecoder },
   TextEncoder: { value: TextEncoder },
   ReadableStream: { value: ReadableStream },
+  BroadcastChannel: { value: channelMock },
 });
 
-const { Blob, File } = require("node:buffer");
 const { fetch, Headers, FormData, Request, Response } = require("undici");
 
 Object.defineProperties(globalThis, {
