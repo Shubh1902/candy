@@ -9,20 +9,23 @@
  * you don't want to deal with this.
  */
 //@ts-ignore
-import { TextDecoder, TextEncoder, ReadableStream } from "node:util";
-import { Blob, File } from "node:buffer";
-function channelMock() {}
-channelMock.prototype.onmessage = function () {};
-channelMock.prototype.postMessage = function (data: any) {
-  this.onmessage({ data });
-};
+const { TextDecoder, TextEncoder } = require("node:util");
+//@ts-ignore
+const { clearImmediate } = require("node:timers");
+const { ReadableStream, TransformStream } = require("node:stream/web");
+const { PerformanceObserver, performance } = require("node:perf_hooks");
+
 Object.defineProperties(globalThis, {
   TextDecoder: { value: TextDecoder },
   TextEncoder: { value: TextEncoder },
   ReadableStream: { value: ReadableStream },
-  BroadcastChannel: { value: channelMock },
+  clearImmediate: { value: clearImmediate },
+  TransformStream: { value: TransformStream },
+  performance: { value: performance },
+  PerformanceObserver: { value: PerformanceObserver },
 });
 
+const { Blob, File } = require("node:buffer");
 const { fetch, Headers, FormData, Request, Response } = require("undici");
 
 Object.defineProperties(globalThis, {

@@ -1,5 +1,7 @@
-import React, { FormEvent, useCallback, useState } from "react";
+"use client";
+import React, { FormEvent, useCallback, useEffect, useState } from "react";
 import "./index.css";
+
 interface Products {
   id: number;
   title: string;
@@ -13,9 +15,15 @@ interface Products {
   thumbnail: string;
   images: string[];
 }
-const Products = async () => {
-  const resp = await fetch("https://dummyjson.com/products");
-  const { products }: { products: Products[] } = await resp.json();
+const Products = () => {
+  const [products, setProducts] = useState<Products[]>([]);
+
+  useEffect(() => {
+    fetch("https://dummyjson.com/products")
+      .then((resp) => resp.json())
+      .then(({ products }) => setProducts(products));
+  }, []);
+
   return (
     <ul className="product-wrapper">
       {products.map((prod) => {

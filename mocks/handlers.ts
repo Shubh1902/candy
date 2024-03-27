@@ -1,7 +1,7 @@
 import { HttpResponse, http } from "msw";
 
 export const handlers = [
-  http.get("/https://dummyjson.com/products", () => {
+  http.get("https://dummyjson.com/products", () => {
     return HttpResponse.json({
       products: [
         {
