@@ -16,7 +16,6 @@ interface Products {
 const Products = async () => {
   const resp = await fetch("https://dummyjson.com/products");
   const { products }: { products: Products[] } = await resp.json();
-  // console.log(products);a
   return (
     <ul className="product-wrapper">
       {products.map((prod) => {
