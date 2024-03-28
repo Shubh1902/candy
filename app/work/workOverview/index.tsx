@@ -1,16 +1,7 @@
-import React from "react";
 import "./index.css";
 import Link from "next/link";
-import nurtureLogo from "./nurture.png";
-import talenticaLogo from "./talentica.svg";
-import zebraLogo from "./zebra.png";
 import Image from "next/image";
-import talenticaBackground from "./talentica-background.jpeg";
-import {
-  MONTH_NUMBER_TO_NAME,
-  WORK_DATA,
-  getFormattedDate,
-} from "@/app/constants/constants";
+import { WORK_DATA, getFormattedDate } from "@/app/constants/constants";
 
 const WorkOverview = () => {
   return (
