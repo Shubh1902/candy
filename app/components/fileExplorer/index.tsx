@@ -1,175 +1,167 @@
 "use client";
+import React, { useEffect, useRef, useState } from "react";
+import folderIcon from "./folder.png";
+import fileIcon from "./fileNew.png";
 import Image from "next/image";
-import React, { useContext, useState } from "react";
-import folderImage from "@/public/assets/icons/folder.png";
-import fileImage from "@/public/assets/icons/file.png";
-
+import "./index.css";
 interface Child {
-  id: string;
-  isFolder: boolean;
   name: string;
-  children: Array<Child>;
+  children: Child[];
+  isFolder: boolean;
+  id: string;
 }
 
-interface Data {
-  root: {
-    id: string;
-    isFolder: true;
-    name: string;
-    children: Array<Child>;
-  };
-}
-
-const DATA: Data = {
-  root: {
-    id: "root",
-    isFolder: true,
-    name: "Root",
-    children: [
-      { id: "1", isFolder: true, name: "Folder Level1", children: [] },
-      {
-        id: "2",
-        isFolder: true,
-        name: "Folder level 1",
-        children: [
-          { id: "4", isFolder: true, name: "Folder level 2", children: [] },
-          { id: "5", isFolder: false, name: "File level 2", children: [] },
-        ],
-      },
-      { id: "3", isFolder: false, name: "File level 1", children: [] },
-    ],
-  },
+const INIT_DATA = {
+  id: "root",
+  name: "root",
+  children: [
+    {
+      id: "1",
+      name: "Child1",
+      children: [{ id: "3", name: "File1", children: [], isFolder: false }],
+      isFolder: true,
+    },
+    { id: "2", name: "Child2", children: [], isFolder: true },
+  ],
+  isFolder: true,
 };
 
-const Folder = (props: { child: Child }) => {
-  const { selectedItem, handleItemClick } = useContext(SelectionContext);
-  console.log(selectedItem, props.child.id);
-
-  return (
-    <div className={`flex flex-col pl-5 `}>
-      <div
-        className={`flex cursor-pointer`}
-        onClick={() => {
-          handleItemClick(props.child);
-        }}
-      >
-        <Image
-          src={folderImage.src}
-          height="20"
-          width="20"
-          alt="folder-image"
-          className={` ${
-            selectedItem === props.child.id ? "bg-slate-400 " : ""
-          } `}
-        ></Image>
-        <span
-          className={` pl-2 ${
-            selectedItem === props.child.id ? "bg-slate-400 " : ""
-          }`}
-        >
-          {props.child.name}
-        </span>
-      </div>
-      <div className="pl-5">
-        {props.child.children.map((child) => {
-          return child.isFolder ? (
-            <Folder key={child.id} child={child} />
-          ) : (
-            <File child={child} />
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-const File = (props: { child: Child }) => {
-  const { selectedItem, handleItemClick } = useContext(SelectionContext);
-  return (
-    <div
-      className="flex pl-5 cursor-pointer"
-      onClick={() => {
-        handleItemClick(props.child);
-      }}
-    >
-      <Image
-        src={fileImage.src}
-        height="20"
-        width="20"
-        alt="folder-image"
-        className={` pl-2 ${
-          selectedItem === props.child.id ? "bg-slate-400 " : ""
-        }`}
-      ></Image>
-      <span
-        className={`pl-2 ${
-          selectedItem === props.child.id ? "bg-slate-400 " : ""
-        }`}
-      >
-        {props.child.name}
-      </span>
-    </div>
-  );
-};
-
-const SelectionContext = React.createContext<{
-  selectedItem: undefined | string;
-  handleItemClick: any;
-}>({
-  selectedItem: undefined,
-  handleItemClick: () => {},
-});
-
-const FileExplorer = () => {
-  const [selectedItem, setSelectedItem] = useState<string | undefined>(
-    undefined
-  );
-  const handleItemClick = (child: Child) => {
-    setSelectedItem((prev) => {
-      if (prev === child.id) return undefined;
-      else return child.id;
+const FolderElement = (props: { child: Child }) => {
+  const addFolder = () => {
+    if (newFolder.active) return;
+    setNewFolder((prev) => {
+      return { ...prev, active: true };
     });
   };
-  const addFolder = () => {};
-  const addFile = () => {};
-  const [data, setData] = useState(DATA);
+  const addFile = () => {
+    if (newFile.active) return;
+    setNewFile((prev) => {
+      return { ...prev, active: true };
+    });
+  };
+  const [newFile, setNewFile] = useState({
+    active: false,
+    name: "",
+  });
+  const [newFolder, setNewFolder] = useState({
+    active: false,
+    name: "",
+  });
+
+  const handleFolderName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewFolder((prev) => ({ ...prev, name: event.target.value }));
+  };
+  const handleFileName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewFile((prev) => ({ ...prev, name: event.target.value }));
+  };
+
+  const handleFolderSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    props.child.children.unshift({
+      isFolder: true,
+      name: newFolder.name,
+      id: new Date().toString(),
+      children: [],
+    });
+    setNewFolder(() => ({ name: "", active: false }));
+  };
+
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
-    <div className="p-5">
-      <div className="flex pb-2">
-        <div
-          className="flex w-12 border border-slate-300 cursor-pointer"
-          onClick={addFolder}
-        >
-          <Image
-            src={folderImage.src}
-            height="20"
-            width="20"
-            alt="folder-image"
-          ></Image>
-          <span>+</span>
+    <div className="pl-3 pt-2 folder ">
+      <div className="flex ">
+        <Image
+          src={folderIcon.src}
+          height="30"
+          width="30"
+          alt="Folder Icon"
+          onClick={() => setIsOpen((prev) => !prev)}
+        ></Image>
+        <div>
+          <span>{props.child.name}</span>
         </div>
-        <div
-          className="flex w-12 border border-slate-300 cursor-pointer"
-          onClick={addFile}
-        >
+        <div className="flex ">
           <Image
-            src={fileImage.src}
-            height="20"
-            width="20"
-            alt="folder-image"
+            src={folderIcon.src}
+            height="30"
+            width="30"
+            alt="Folder Icon"
+            onClick={addFolder}
           ></Image>
-          <span>+</span>
+          <div>+</div>
+          <Image
+            src={fileIcon.src}
+            height="30"
+            width="30"
+            alt="File Icon"
+            onClick={addFile}
+          ></Image>
+          <div>+</div>
         </div>
       </div>
-      <SelectionContext.Provider
-        value={{
-          selectedItem,
-          handleItemClick,
-        }}
-      >
-        <Folder child={data.root} />
-      </SelectionContext.Provider>
+      <div className="">
+        {newFolder.active && (
+          <div>
+            <form onSubmit={handleFolderSubmit}>
+              <input
+                type="text"
+                value={newFolder.name}
+                placeholder="Folder name"
+                onChange={handleFolderName}
+              ></input>
+            </form>
+          </div>
+        )}
+        {isOpen &&
+          props.child.children.map((child) => {
+            return (
+              <div>
+                {child.isFolder ? (
+                  <FolderElement key={child.id} child={child} />
+                ) : (
+                  <FileELement key={child.id} child={child} />
+                )}
+              </div>
+            );
+          })}
+        {newFile.active && (
+          <div>
+            <input
+              type="text"
+              value={newFile.name}
+              placeholder="File name"
+              onChange={handleFileName}
+            ></input>
+          </div>
+        )}
+      </div>
     </div>
+  );
+};
+
+const FileELement = (props: { child: Child }) => {
+  return (
+    <div className="flex pl-3 pt-3 folder">
+      <Image src={fileIcon.src} height="30" width="30" alt="File Icon"></Image>
+      <div>
+        <span>{props.child.name}</span>
+      </div>
+    </div>
+  );
+};
+
+const FileExplorer = () => {
+  const data = useRef(INIT_DATA);
+
+  return (
+    <>
+      <div>File Explorer Interview Question</div>
+      <div>
+        <FolderElement child={data.current} />
+      </div>
+    </>
   );
 };
 

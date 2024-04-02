@@ -7,6 +7,8 @@ const ProjectDetails = ({ params }: { params: { slug: string } }) => {
     switch (params.slug) {
       case "file-explorer":
         return <FileExplorer />;
+      case "autocomplete":
+        return <FileExplorer />;
       default:
         return <></>;
     }

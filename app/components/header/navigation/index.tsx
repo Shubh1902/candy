@@ -8,10 +8,8 @@ interface Props {
 }
 const ROUTES = [
   { label: "Work Experience", path: "/work" },
-  { label: "Projects", path: "/projects" },
+  { label: "Small Problems", path: "/small-problems" },
   { label: "About", path: "/about" },
-  // { label: "Products", path: "/products" },
-  // { label: "Todos", path: "/todos" },
 ];
 const Navigation = (props: Props) => {
   return (

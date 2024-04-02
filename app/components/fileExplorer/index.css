@@ -1,0 +1,13 @@
+.folder {
+  border-left: 1px solid gray;
+  animation: showup 500ms forwards;
+}
+
+@keyframes showup {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}

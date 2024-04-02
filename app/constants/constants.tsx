@@ -37,7 +37,7 @@ export const WORK_DATA: Array<WorkInterface> = [
       startDate: new Date(2021, 8),
       endDate: new Date(2024, 1),
     },
-    position: "Technical Lead",
+    position: "Frontend Lead",
     description: [
       `Collaborated with product managers and UI/UX designers to define project requirements and
     plan work for front end teams across 3 verticals`,
